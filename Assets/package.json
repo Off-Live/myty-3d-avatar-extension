@@ -1,0 +1,36 @@
+{
+  "name": "com.offlive.myty.myty-extension.3d",
+  "displayName": "MYTY 3D Avatar Extension",
+  "description": "Avatar Development Kit for Social Metaverse. https://myty.space/",
+  "version": "1.0.0",
+  "unity": "2021.3",
+  "author": {
+    "name": "OFF LIVE PTE. LTD",
+    "email": "myty@off.live",
+    "url": "https://www.myty.space/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Off-Live/myty-3d-avatar-extension.git"
+  },
+  "keywords": [
+    "myty",
+    "myty-kit",
+    "runtimes",
+    "3d"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://discord.gg/yvEVqPCu"
+  },
+  "homepage": "https://github.com/Off-Live/myty-kit/",
+  "documentationUrl": "https://github.com/Off-Live/myty-kit/blob/main/README.md",
+  "changelogUrl": "https://github.com/Off-Live/myty-kit/releases",
+  "licensesUrl": "https://github.com/Off-Live/myty-kit/blob/main/LICENSE.md",
+  "dependencies": {
+    "com.vrmc.gltf": "https://github.com/vrm-c/UniVRM.git?path=/Assets/UniGLTF#v0.108.0",
+    "com.vrmc.vrm": "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRM10#v0.108.0",
+    "com.vrmc.vrmshaders": "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRMShaders#v0.108.0",
+    "com.offlive.myty.myty-kit": "https://github.com/Off-Live/myty-kit.git?path=/Assets#pre-release/sdk-core-dev"
+  }
+}
