@@ -26,11 +26,5 @@
   "homepage": "https://github.com/Off-Live/myty-kit/",
   "documentationUrl": "https://github.com/Off-Live/myty-kit/blob/main/README.md",
   "changelogUrl": "https://github.com/Off-Live/myty-kit/releases",
-  "licensesUrl": "https://github.com/Off-Live/myty-kit/blob/main/LICENSE.md",
-  "dependencies": {
-    "com.vrmc.gltf": "https://github.com/vrm-c/UniVRM.git?path=/Assets/UniGLTF#v0.108.0",
-    "com.vrmc.vrm": "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRM10#v0.108.0",
-    "com.vrmc.vrmshaders": "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRMShaders#v0.108.0",
-    "com.offlive.myty.myty-kit": "https://github.com/Off-Live/myty-kit.git?path=/Assets#pre-release/sdk-core-dev"
-  }
+  "licensesUrl": "https://github.com/Off-Live/myty-kit/blob/main/LICENSE.md"
 }
