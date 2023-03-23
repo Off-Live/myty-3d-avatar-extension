@@ -1,14 +1,28 @@
+using System.Collections.Generic;
 using MYTYKit.Components;
 using MYTYKit.MotionAdapters;
 using MYTYKit.MotionTemplates;
 using UnityEditor;
+using UnityEditor.PackageManager;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 namespace MYTYKit
 {
     public class Menu
     {
-        const string AnimationControllerPath = "Assets/MYTYKit/Extensions/3D Avatar/Animation/DefaultAnimationController.controller"; 
+        const string AnimationControllerPath = "Assets/MYTYKit/Extensions/3D Avatar/Animation/DefaultAnimationController.controller";
+        
+          
+        static AddAndRemoveRequest m_request;
+        static readonly List<string> PackageList = new ()
+        {
+            "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRMShaders#v0.109.0",
+            "https://github.com/vrm-c/UniVRM.git?path=/Assets/UniGLTF#v0.109.0",
+            "https://github.com/vrm-c/UniVRM.git?path=/Assets/VRM10#v0.109.0",
+        };
+
+        
         [MenuItem("MYTY Kit/Extensions/Setup 3D Avatar Exporter to Scene", false, 100)]
         public static void CreateAvatarExporterPipeline()
         {
@@ -48,5 +62,34 @@ namespace MYTYKit
             driver.poseWorldPoints = mapper.GetTemplate("BodyPoints") as PointsTemplate;
             
         }
+
+        [MenuItem("MYTY Kit/Extensions/Import UniVRM", false, 100)]
+        static void ImportUniVRM()
+        {
+            m_request = Client.AddAndRemove(PackageList.ToArray(), null);
+            EditorUtility.DisplayProgressBar("MYTY Kit","Installing packages",0.5f);
+            EditorApplication.update += Progress;
+        }
+    
+        static void Progress()
+        {
+            if (m_request.IsCompleted)
+            {
+                if (m_request.Status == StatusCode.Success)
+                {
+                    Debug.Log("Installation Done!");
+                    EditorApplication.update -= Progress;
+                    EditorUtility.ClearProgressBar();
+                }
+                else if (m_request.Status >= StatusCode.Failure)
+                {
+                    Debug.LogError(m_request.Error.message);
+                    EditorApplication.update -= Progress;
+                    EditorUtility.ClearProgressBar();
+                }
+            
+            }
+        }
     }
+
 }
