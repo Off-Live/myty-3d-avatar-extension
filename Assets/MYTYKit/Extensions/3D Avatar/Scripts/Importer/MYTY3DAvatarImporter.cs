@@ -115,7 +115,12 @@ namespace MYTYKit.AvatarImporter
             using(var glbData = new GlbBinaryParser(bytes, loadName).Parse())
             using (var loader = new ImporterContext(glbData))
             {
-                var instance = await loader.LoadAsync(new RuntimeOnlyAwaitCaller());
+#if UNITY_WEBGL
+                var awaiter = new RuntimeOnlyNoThreadAwaitCaller();
+#else
+                var awaiter = new RuntimeOnlyAwaitCaller();
+#endif
+                var instance = await loader.LoadAsync(awaiter);
                 instance.name = loadName;
                 instance.EnableUpdateWhenOffscreen();
                 instance.ShowMeshes();
