@@ -15,9 +15,10 @@ namespace MYTYKit.Components
         public SkinnedMeshRenderer mainBody;
         public Transform rootBone;
         public HumanoidAvatarBuilder avatarBuilder;
-
+        public bool isAutoStart = true;
+        
         List<Transform> m_traitRootBones = new();
-        void Start()
+        public void Initialize()
         {
             var binder = GetComponent<MYTYAvatarBinder>();
             var driver = GetComponent<MYTY3DAvatarDriver>();
@@ -42,6 +43,11 @@ namespace MYTYKit.Components
                
             }
 
+        }
+
+        void Start()
+        {
+            if(isAutoStart) Initialize();
         }
         
         void FixAndFindRootBone()
